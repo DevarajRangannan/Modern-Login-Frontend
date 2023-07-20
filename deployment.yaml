@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-frontend-application
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: login-frontend
+  template:
+    metadata:
+      labels:
+        app: login-frontend
+ 
+    spec:
+      containers:
+      - name: login-frontend
+        image: devarangan/login-frontend
+        envFrom:
+        - secretRef:
+            name: my-secret
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-frontend-service
+spec:
+  selector:
+    app: login-frontend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+    nodePort: 30001
+  type: NodePort
