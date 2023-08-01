@@ -1,0 +1,19 @@
+.input-box:valid,
+.input-box:focus
+{
+    border: solid 4px transparent;
+    border-radius: 4pxpx;
+    background-image: linear-gradient(white, white), radial-gradient(circle at top left, rgb(79, 120, 216), rgb(252, 83, 184));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+.input-box:valid + span,
+.input-box:focus + span
+{
+    transform: translateY(-1.3rem);
+    background-image: linear-gradient(45deg, rgb(79, 120, 216), rgb(252, 83, 184));
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+}
