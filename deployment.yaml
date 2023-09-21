@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: login-frontend-application
+  name: modern-login-frontend-application
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: login-frontend
+      app: modern-login-frontend
   template:
     metadata:
       labels:
-        app: login-frontend
+        app: modern-login-frontend
  
     spec:
       containers:
       - name: login-frontend
-        image: devarangan/login-frontend
+        image: devarangan/modern-login-frontend
         envFrom:
         - secretRef:
             name: my-secret
@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: login-frontend-service
+  name: modern-login-frontend-service
 spec:
   selector:
-    app: login-frontend
+    app: modern-login-frontend
   ports:
   - protocol: TCP
     port: 80
